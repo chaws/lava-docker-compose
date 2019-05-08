@@ -23,3 +23,9 @@ lava-server manage device-types list | grep -q x15 || \
 
 lava-server manage devices list | grep -q x15-01 || \
     lava-server manage devices add --device-type x15 --worker dispatcher x15-01
+
+lava-server manage device-types list | grep -q bcm2837-rpi-3-b-32 || \
+    lava-server manage device-types add bcm2837-rpi-3-b-32
+
+lava-server manage devices list | grep -q rpi-chaws || \
+    lava-server manage devices add --device-type bcm2837-rpi-3-b-32 --worker dispatcher rpi-chaws

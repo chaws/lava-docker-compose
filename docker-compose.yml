@@ -76,6 +76,7 @@ services:
     devices:
       - /dev/kvm # needed for QEMU
       - /dev/net/tun # needed for QEMU
+      - /dev/ttyACM0:/dev/ttyACM0
     cap_add:
       - NET_ADMIN # needed for QEMU
     environment:
@@ -118,13 +119,14 @@ services:
     container_name: worker_ser2net
     volumes:
       - ./ser2net/ser2net.conf:/etc/ser2net.conf
-      - '/dev/serial:/dev/serial' # required for serial adapters
-      - '/dev:/dev'
+      #- '/dev/serial:/dev/serial' # required for serial adapters
+      #- '/dev:/dev'
     devices:
-      - /dev/serial/by-id/usb-FTDI_TTL232R-3V3_FT914B60-if00-port0
-      - /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_AL03HJDR-if00-port0
-      - /dev/serial/by-id/usb-FTDI_TTL232R-3V3_FT9PB4QT-if00-port0
-      - /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A907DVD3-if00-port0
+       - /dev/ttyUSB0:/dev/ttyUSB0
+      #- /dev/serial/by-id/usb-FTDI_TTL232R-3V3_FT914B60-if00-port0
+      #- /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_AL03HJDR-if00-port0
+      #- /dev/serial/by-id/usb-FTDI_TTL232R-3V3_FT9PB4QT-if00-port0
+      #- /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A907DVD3-if00-port0
 
 #  worker-nfs:
 #    build:

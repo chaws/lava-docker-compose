@@ -1,15 +1,26 @@
 # Using LAVA & SQUAD with Docker Compose
 
 This repository attempts to provide a reference implementation of deploying
-LAVA using it's [officially distributed docker
+LAVA using its [officially distributed docker
 containers](https://master.lavasoftware.org/static/docs/v2/docker-admin.html#official-lava-software-docker-images)
-and SQUAD using it's containers.
+and SQUAD using its containers.
 
 ## Requirements
 
 Install the following.
 - [Docker](https://docs.docker.com/install/)
 - [docker-compose](https://docs.docker.com/compose/install/)
+
+
+Make sure some ports are available before firing up the containers: 69, 80, 3128, 8000, and 8080
+
+    $ docker-compose up
+
+This will bring up all live logs from all services in this docker-compose structure.
+
+## What you'll see
+
+Access [localhost:8080](http://localhost:8080) for LAVA and [localhost:8000](http://localhost:8000) for SQUAD, a project dashboard for keep track of what's being run and what's been built.
 
 ## Configuration
 
@@ -171,3 +182,11 @@ provide notification service. In this case it connects to LAVA master ZMQ publis
 #### squad-scheduler
 
 Scheduler triggers periodic background tasks defined in SQUAD's settings.
+
+### Boards added to this set up
+
+This repository is a fork from Milosz, which is a fork from Dan. In this fork I
+wrote a simple arduino program that controls a 8-channel relay via [power_control.py](./dispatcher-docker/power_control.py)
+which is configured in the device [rpi-chaws](./server-overlay/etc/lava-server/dispatcher-config/devices/rpi-chaws.jinja2).
+
+Make sure that the [dispatcher_ip](./server-overlay/etc/lava-server/dispatcher.d/dispatcher.yaml) is set to whatever IP address your machine has.

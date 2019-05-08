@@ -14,7 +14,7 @@ visibility: public
 context:
   extra_kernel_args: " 8250.nr_uarts=1"
   extra_nfsroot_args: ",vers=3"
-  console_device: "ttyS0"
+  console_device: "ttyUSB0"
 
 actions:
 - deploy:

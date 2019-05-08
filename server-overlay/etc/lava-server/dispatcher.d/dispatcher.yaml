@@ -4,7 +4,7 @@
 # # /etc/lava-server/dispatcher.d on the *master*.
 #
 # # Only set this key, if this dispatcher has many IPs
-dispatcher_ip: 192.168.0.20
+dispatcher_ip: 192.168.15.13
 #
 # # Set this key, if you want to change the default lxc creation path
 # # No trailing /

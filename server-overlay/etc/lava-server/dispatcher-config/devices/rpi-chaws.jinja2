@@ -1,0 +1,11 @@
+{% extends 'bcm2837-rpi-3-b.jinja2' %}
+{# Power control us via USB #}
+{% set hard_reset_command = ['/usr/local/lab-scripts/power_control.py --command reset --relay 1'] %}
+{% set power_off_command = '/usr/local/lab-scripts/power_control.py --command off --relay 1' %}
+{% set power_on_command = '/usr/local/lab-scripts/power_control.py --command on --relay 1' %}
+{% set connection_list = ['uart0'] %}
+{% set connection_tags = {'uart0': ['primary', 'telnet']} %}
+{% set connection_commands = {'uart0': 'telnet ser2net 3000'} %} 
+
+{% set recovery_mode_command = ['d', '\r'] %}
+{% set recovery_exit_command = ['reset\r'] %} 
